@@ -1,7 +1,7 @@
 import scrapy
 from scrapy.http import Response
 
-from config import TECHNOLOGIES
+from config import TECHNOLOGIES, ENGLISH
 
 
 class VacanciesSpider(scrapy.Spider):
@@ -65,7 +65,7 @@ class VacanciesSpider(scrapy.Spider):
         lvl = response.css(
                 ".job-additional-info--item-text:contains('Англійська')::text"
             ).get().strip()
-        return " ".join(lvl.split()[1:])
+        return ENGLISH.index(" ".join(lvl.split()[1:]))
 
     @staticmethod
     def get_salary(response: Response) -> str:

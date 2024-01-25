@@ -100,3 +100,10 @@ TECHNOLOGIES = [
     "Algorithms",
     "Asyncio",
 ]
+ENGLISH = [
+    "Beginner/Elementary",
+    "Pre-Intermediate",
+    "Intermediate",
+    "Upper-Intermediate",
+    "Advanced/Fluent"
+]
