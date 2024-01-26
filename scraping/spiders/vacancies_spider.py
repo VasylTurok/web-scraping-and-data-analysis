@@ -9,7 +9,6 @@ class VacanciesSpider(scrapy.Spider):
     allowed_domains = ["djinni.co"]
     start_urls = [
         "https://djinni.co/jobs/?primary_keyword=Python"
-        # "https://djinni.co/jobs/?primary_keyword=Python&page=15"
     ]
 
     def parse(self, response: Response, **kwargs):
