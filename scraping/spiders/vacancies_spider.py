@@ -68,7 +68,5 @@ class VacanciesSpider(scrapy.Spider):
         ).get()
         if salary is not None:
             return salary.strip()
-        else:
-            return ""
 
 
