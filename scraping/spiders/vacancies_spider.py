@@ -9,7 +9,6 @@ class VacanciesSpider(scrapy.Spider):
     allowed_domains = ["djinni.co"]
     start_urls = [
         "https://djinni.co/jobs/?primary_keyword=Python"
-        # "https://djinni.co/jobs/?primary_keyword=Python&page=15"
     ]
 
     def parse(self, response: Response, **kwargs):
@@ -41,14 +40,9 @@ class VacanciesSpider(scrapy.Spider):
         }
 
     @staticmethod
-    def get_stack(text: str) -> [str]:
-        result = []
-        for tech in TECHNOLOGIES:
-            tech_low = tech.lower()
-            if tech_low in text and tech_low not in result:
-                result.append(tech)
+    def get_stack(text: str) -> list:
 
-        return result
+        return list({tech for tech in TECHNOLOGIES if tech.lower() in text.lower()})
 
     @staticmethod
     def get_experience_years(response: Response) -> int:
@@ -74,7 +68,5 @@ class VacanciesSpider(scrapy.Spider):
         ).get()
         if salary is not None:
             return salary.strip()
-        else:
-            return ""
 
 
